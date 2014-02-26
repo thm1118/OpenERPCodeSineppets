@@ -1,0 +1,10 @@
+<t t-set="columns_count" t-value="visible_columns.length + (options.selectable ? 1 : 0) + (options.deletable ? 1 : 0)"/>
+     <thead>
+         <tr t-if="(!!options.action_buttons and !options.$buttons) or (!!options.pager and !options.$pager)">
+             </th>
+             <t t-foreach="columns" t-as="column">
+                 <th t-if="!column.meta and column.invisible !== '1'" t-att-data-id="column.id"
+                    t-attf-class="oe_list_header_#{column.widget or column.type} #{((options.sortable and column.tag !== 'button') ? 'oe_sortable' : null)}" t-att-width="column.width"><div>
+                     <t t-if="column.tag !== 'button'"><t t-esc="column.string"/></t>
+                 </div></th>
+             </t>
